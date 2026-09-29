@@ -1,14 +1,44 @@
 const PHONE="918267930564";
-/* Add photos/videos: put files in assets/gallery/ and list them here. */
 const GALLERY=[
-  // {type:"img",src:"assets/gallery/photo1.jpg",alt:"Box cricket at Arena Seven"},
-  // {type:"video",src:"assets/gallery/match.mp4"},
+  {src:"assets/gallery/1.PNG",alt:"Arena Seven turf under floodlights"},
+  {src:"assets/gallery/2.jpg.jpeg",alt:"Arena Seven turf and cricket pitch"},
+  {src:"assets/gallery/3.PNG",alt:"Players enjoying a cricket match at Arena Seven"},
+  {src:"assets/gallery/3E314887-3C13-4999-8687-827F3479B23E.PNG",alt:"Arena Seven turf at night"},
 ];
 const $=s=>document.querySelector(s);
 const y=$("#yr");if(y)y.textContent=new Date().getFullYear();
 const gal=$("#gal");
-if(gal){const t=GALLERY.length?GALLERY:Array.from({length:6},()=>null);
-gal.innerHTML=t.map(x=>!x?'<div class="tile">Photo coming soon</div>':x.type==="video"?`<div class="tile"><video src="${x.src}" controls playsinline preload="metadata"></video></div>`:`<div class="tile"><img src="${x.src}" alt="${x.alt||"Arena Seven"}" loading="lazy"></div>`).join("")}
+if(gal){
+  gal.className="carousel";
+  gal.innerHTML=`<div class="carousel-viewport"><div class="carousel-track">${GALLERY.map((x,i)=>`<button class="carousel-slide" type="button" data-gallery-index="${i}" aria-label="Open photo ${i+1}: ${x.alt}"><img src="${x.src}" alt="${x.alt}" loading="${i?"lazy":"eager"}"></button>`).join("")}</div></div><button class="carousel-prev" type="button" aria-label="Previous photo">&#8592;</button><button class="carousel-next" type="button" aria-label="Next photo">&#8594;</button><div class="carousel-dots" aria-label="Choose a photo">${GALLERY.map((x,i)=>`<button type="button" data-carousel-index="${i}" aria-label="Show photo ${i+1}"${i?"":" aria-current=\"true\""}></button>`).join("")}</div>`;
+  const track=gal.querySelector(".carousel-track"),dots=[...gal.querySelectorAll("[data-carousel-index]")];
+  let slide=0;
+  function moveTo(index){slide=(index+GALLERY.length)%GALLERY.length;track.style.transform=`translateX(-${slide*100}%)`;dots.forEach((dot,i)=>dot.setAttribute("aria-current",i===slide?"true":"false"))}
+  const next=()=>moveTo(slide+1),previous=()=>moveTo(slide-1);
+  gal.querySelector(".carousel-next").addEventListener("click",next);
+  gal.querySelector(".carousel-prev").addEventListener("click",previous);
+  dots.forEach(dot=>dot.addEventListener("click",()=>moveTo(+dot.dataset.carouselIndex)));
+  let timer=setInterval(next,4500);
+  gal.addEventListener("mouseenter",()=>clearInterval(timer));
+  gal.addEventListener("mouseleave",()=>{clearInterval(timer);timer=setInterval(next,4500)});
+  gal.addEventListener("focusin",()=>clearInterval(timer));
+  gal.addEventListener("focusout",()=>{clearInterval(timer);timer=setInterval(next,4500)});
+  const lightbox=document.createElement("div");
+  lightbox.className="lightbox";
+  lightbox.setAttribute("aria-hidden","true");
+  lightbox.innerHTML='<button class="lightbox-close" type="button" aria-label="Close gallery">&times;</button><button class="lightbox-prev" type="button" aria-label="Previous photo">&#8592;</button><figure><img alt=""><figcaption></figcaption></figure><button class="lightbox-next" type="button" aria-label="Next photo">&#8594;</button>';
+  document.body.append(lightbox);
+  const lightboxImage=lightbox.querySelector("img"),caption=lightbox.querySelector("figcaption");
+  let current=0;
+  function show(index){current=(index+GALLERY.length)%GALLERY.length;const item=GALLERY[current];lightboxImage.src=item.src;lightboxImage.alt=item.alt;caption.textContent=`${current+1} / ${GALLERY.length}`}
+  function close(){lightbox.classList.remove("is-open");lightbox.setAttribute("aria-hidden","true")}
+  gal.addEventListener("click",e=>{const tile=e.target.closest("[data-gallery-index]");if(!tile)return;show(+tile.dataset.galleryIndex);lightbox.classList.add("is-open");lightbox.setAttribute("aria-hidden","false")});
+  lightbox.querySelector(".lightbox-close").addEventListener("click",close);
+  lightbox.querySelector(".lightbox-prev").addEventListener("click",()=>show(current-1));
+  lightbox.querySelector(".lightbox-next").addEventListener("click",()=>show(current+1));
+  lightbox.addEventListener("click",e=>{if(e.target===lightbox)close()});
+  document.addEventListener("keydown",e=>{if(!lightbox.classList.contains("is-open"))return;if(e.key==="Escape")close();if(e.key==="ArrowLeft")show(current-1);if(e.key==="ArrowRight")show(current+1)});
+}
 const bf=$("#bf");
 if(bf){
 const OPEN=6,CLOSE=24;/* slot hours shown in the picker (edit if different) */
