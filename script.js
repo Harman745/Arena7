@@ -27,7 +27,7 @@ if(cursor && finePointer.matches && !reducedMotion.matches){
     if(state) cursor.classList.add(`is-${state}`);
     label.textContent=text;
   };
-  const magneticCtas=$$('.hero-actions .btn,.nav-book,.booking-card .btn-whatsapp');
+  const magneticCtas=$$('.hero-actions .btn,.nav-book,.booking-card .btn-whatsapp,.carousel-controls button');
   magneticCtas.forEach(cta=>{
     cta.classList.add('magnetic-cta');
     cta.addEventListener('pointermove',event=>{
@@ -44,7 +44,8 @@ if(cursor && finePointer.matches && !reducedMotion.matches){
   });
   $$('.sport-card,a,button').forEach(element=>{
     element.addEventListener('pointerenter',()=>{
-      if(element.matches('a[href*="wa.me"]')) setCursorState('whatsapp');
+      if(element.matches('.carousel-slide')) setCursorState('view','VIEW');
+      else if(element.matches('a[href*="wa.me"]')) setCursorState('whatsapp');
       else if(element.matches('.sport-card') || element.closest('.sport-card')) setCursorState('play','PLAY');
       else setCursorState('link');
     });
