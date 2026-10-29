@@ -1,8 +1,19 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://YOUR-USERNAME.github.io/arena-seven/</loc></url>
-<url><loc>https://YOUR-USERNAME.github.io/arena-seven/sports.html</loc></url>
-<url><loc>https://YOUR-USERNAME.github.io/arena-seven/gallery.html</loc></url>
-<url><loc>https://YOUR-USERNAME.github.io/arena-seven/book.html</loc></url>
-<url><loc>https://YOUR-USERNAME.github.io/arena-seven/contact.html</loc></url>
+  <url>
+    <loc>https://arenaseven.in/</loc>
+  </url>
+  <url>
+    <loc>https://arenaseven.in/sports.html</loc>
+  </url>
+  <url>
+    <loc>https://arenaseven.in/gallery.html</loc>
+  </url>
+  <url>
+    <loc>https://arenaseven.in/book.html</loc>
+  </url>
+  <url>
+    <loc>https://arenaseven.in/contact.html</loc>
+  </url>
 </urlset>
