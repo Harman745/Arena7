@@ -1,19 +1,43 @@
-# Arena Seven website
+# Arena Seven — upgraded website
 
-Plain HTML, CSS and JS. No build step.
+A responsive, animated multi-sport turf website for Arena Seven in Pitthuwala, Dehradun. Built with **HTML, CSS, and vanilla JavaScript**. No Node build or paid service required.
 
-## Put it on GitHub Pages
-1. Create a new public repository on github.com (for example `arena-seven`).
-2. Click "Add file" > "Upload files", drag in everything from this folder (keep the `assets` folder), and commit.
-3. Go to Settings > Pages. Under "Build and deployment", choose "Deploy from a branch", branch `main`, folder `/ (root)`, and save.
-4. After a minute your site is live at `https://YOUR-USERNAME.github.io/arena-seven/`.
+## What's new
 
-## Get it on Google
-1. Open `sitemap.xml` and `robots.txt` and replace `https://YOUR-USERNAME.github.io/arena-seven/` with your real site address (or your own domain later).
-2. Go to search.google.com/search-console, add your site as a "URL prefix" property, verify it, then submit `sitemap.xml`.
-3. Create a free Google Business Profile for Arena Seven (business.google.com). This is what puts the turf on Google Maps and in "turf near me" searches. Add your website link there.
+- WhatsApp-first booking: the old date/time/name form has been removed.
+- Direct WhatsApp links for each sport and a general booking link throughout the site.
+- Animated hero, scrolling sport ticker, reveal-on-scroll sections, hover effects, and a scroll progress bar.
+- Collapsible mobile navigation and mobile-friendly page layouts.
+- Gallery: swipeable carousel, keyboard navigation, full-screen lightbox, and pause on hover/focus.
+- Photos converted to WebP for a smaller and faster website.
+- Respects reduced-motion accessibility settings. No fictitious live availability or published prices.
 
-## Edit
-- Phone, gallery photos and slot hours: `script.js`. Gallery files go in `assets/gallery/`.
-- Colours and layout: `style.css`.
-- Address, sports and text: the `.html` files.
+## Preview locally
+
+Open `index.html` in a browser. For the most accurate preview use a simple local server:
+
+```bash
+python -m http.server 8000
+```
+
+Then visit `http://localhost:8000/`.
+
+## Publish
+
+On Netlify, drag the **contents** of this `arena-seven-website` directory into your site's deploy area, or upload this ZIP if Netlify accepts it. The homepage file must be at the website root (not inside a nested folder).
+
+For GitHub Pages, upload the contents of this directory to the root of your repo, then enable Pages under Settings > Pages.
+
+## Update the website
+
+- WhatsApp number: currently **+91 82679 30564**, in HTML page links. Search the HTML files for `918267930564` to update it.
+- Sport names, prices text, addresses, page copy: edit the `.html` pages.
+- Animation styles, colors, spacing, navigation: `style.css`.
+- Gallery image paths and interaction logic: `script.js`.
+- Gallery files: `assets/gallery/` (optimized `.webp`).
+- Opening hours currently advertised as **7 AM – 12 AM**; verify with the owner before publishing.
+- `robots.txt` and `sitemap.xml`: update with the final domain before adding the website to Google Search Console. Existing placeholders have been kept.
+
+## Booking behavior
+
+Every Book on WhatsApp link opens WhatsApp with an enquiry message ready to send. Customers ask the owner about availability and rates, and **the team confirms bookings manually**. There is no calendar, payment processor, customer database, or automated reservation system; this is intentional.
