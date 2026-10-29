@@ -70,7 +70,7 @@ section{padding:110px 0;position:relative}
 .hero-side{position:absolute;right:0;top:46%;writing-mode:vertical-rl;letter-spacing:.24em;font-size:11px;font-weight:800;color:#ffffff98}.hero-side span{color:var(--accent);padding:10px 0}
 .hero-scroll{position:absolute;right:24px;bottom:28px;font-weight:800;font-size:10px;letter-spacing:.19em;display:inline-flex;align-items:center;gap:16px;text-decoration:none;color:#f3f3ec}.hero-scroll span{display:grid;place-items:center;border:1px solid #ffffff5c;border-radius:50%;width:34px;height:34px;color:var(--accent);font-size:20px;animation:bob 2.5s ease-in-out infinite}
 /* Moving sports ticker */
-.ticker{background:var(--accent);color:#14160f;overflow:hidden;white-space:nowrap;border-block:1px solid #d28c07;padding:15px 0}.ticker-track{display:flex;align-items:center;gap:28px;width:max-content;animation:ticker-run 36s linear infinite}.ticker-track span{font:400 24px/1 var(--display);letter-spacing:.04em}.ticker-track em{font:400 23px/1 var(--display);font-style:normal;opacity:.55}
+.ticker{background:var(--accent);color:#14160f;overflow:hidden;white-space:nowrap;border-block:1px solid #d28c07;padding:15px 0}.ticker-track{display:flex;align-items:center;gap:28px;width:max-content;animation:ticker-run 28s linear infinite;will-change:transform}.ticker-track span{font:400 24px/1 var(--display);letter-spacing:.04em}.ticker-track em{font:400 23px/1 var(--display);font-style:normal;opacity:.55}
 /* Sports cards */
 .sports-section{background:radial-gradient(70% 45% at 95% 0,rgba(255,165,17,.045),transparent 70%),var(--bg)}
 .sports-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px}
@@ -148,7 +148,7 @@ section{padding:110px 0;position:relative}
 .can-animate .reveal.is-visible{opacity:1;transform:translateY(0)}
 @keyframes rise-in{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 @keyframes hero-image-in{from{opacity:.72}to{opacity:1}}
-@keyframes ticker-run{to{transform:translateX(-50%)}}
+@keyframes ticker-run{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
 @keyframes bob{0%,100%{transform:translateY(-3px)}50%{transform:translateY(4px)}}
 @keyframes card-glow{from{transform:translate(-20px,-15px);opacity:.65}to{transform:translate(25px,25px);opacity:1}}
 /* Tablet */
